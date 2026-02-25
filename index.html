@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob's Personal Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <main class="container">
+        <section class="glass-card">
+            <header>
+                <div class="profile-badge">B</div>
+                <h1 class="name-title">Hello, I'm <span class="highlight">Bob</span></h1>
+                <p class="tagline">Welcome to my digital sanctuary.</p>
+            </header>
+            
+            <div class="time-container">
+                <div class="time-label">Current local time</div>
+                <div id="clock" class="digital-clock">00:00:00</div>
+                <div id="date" class="date-display">Wednesday, February 25, 2026</div>
+            </div>
+
+            <footer class="footer">
+                <div class="status-indicator">
+                    <span class="pulse"></span>
+                    Online and Creating
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
